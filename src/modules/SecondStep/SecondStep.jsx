@@ -85,6 +85,7 @@ const SecondStep = ({ handleChangeStep }) => {
         </LeftComponent>
         <Summary
           isDropshipper={localStorage.getItem("isDropshipper") === "true"}
+          onNext={() => handleChangeStep(3)}
           shipment={selectedShipment}
           payment={selectedPayment}
           step={2}

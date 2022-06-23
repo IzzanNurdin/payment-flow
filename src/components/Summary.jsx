@@ -99,6 +99,7 @@ const Expedition = styled.div`
   .border {
     border-top: 1px solid #d8d8d8;
     width: 15%;
+    margin-top: 12px;
     margin-bottom: 8px;
   }
 
@@ -141,6 +142,13 @@ const Summary = ({ isDropshipper, step, onNext, shipment, payment }) => {
             </label>
           </Expedition>
         )}
+        {step === 3 && shipment && (
+          <Expedition>
+            <div className="border"></div>
+            <p>Payment method</p>
+            <label>{payment.name}</label>
+          </Expedition>
+        )}
       </RightHeader>
       <DetailWrapper>
         <PriceDetail>
@@ -158,20 +166,24 @@ const Summary = ({ isDropshipper, step, onNext, shipment, payment }) => {
               <p>
                 <b>{shipment.name}</b> shipment
               </p>{" "}
-              <span>{formatNumber(shipment.price)}</span>
+              <span>
+                {shipment && shipment.price ? formatNumber(shipment.price) : 0}
+              </span>
             </Price>
           )}
           <Total>
-            <h3>Total</h3> <h3>{formatNumber(total)}</h3>
+            <h3>Total</h3> <h3>{total ? formatNumber(total) : 0}</h3>
           </Total>
         </PriceDetail>
-        <NextButton onClick={() => onNext(step + 1)}>
-          {step === 1
-            ? "Continue to Payment"
-            : step === 2
-            ? `Pay with ${payment.name}`
-            : ""}
-        </NextButton>
+        {step !== 3 && (
+          <NextButton onClick={() => onNext(step + 1)}>
+            {step === 1
+              ? "Continue to Payment"
+              : step === 2
+              ? `Pay with ${payment.name}`
+              : ""}
+          </NextButton>
+        )}
       </DetailWrapper>
     </RightComponent>
   );

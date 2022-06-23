@@ -1,8 +1,9 @@
 import React from "react";
-import FirstStep from "modules/FirstStep";
 import { Layout } from "components";
 import "./App.css";
+import FirstStep from "modules/FirstStep";
 import SecondStep from "modules/SecondStep";
+import ThirdStep from "modules/ThirdStep";
 
 function App() {
   const [currentStep, setStep] = React.useState(1);
@@ -13,6 +14,9 @@ function App() {
   };
 
   React.useEffect(() => {
+    if (!localStorage.getItem("cost")) {
+      localStorage.setItem("cost", 500000);
+    }
     if (localStorage.getItem("currentStep")) {
       setStep(Number(localStorage.getItem("currentStep")));
     }
@@ -25,6 +29,8 @@ function App() {
           <FirstStep handleChangeStep={handleChangeStep} />
         ) : currentStep === 2 ? (
           <SecondStep handleChangeStep={handleChangeStep} />
+        ) : currentStep === 3 ? (
+          <ThirdStep handleChangeStep={handleChangeStep} />
         ) : null}
       </Layout>
     </div>
