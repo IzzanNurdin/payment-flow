@@ -8,6 +8,7 @@ const Wrapper = styled.button`
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 `;
 
 const Input = styled.div.attrs((props) => ({ checked: props.checked }))`

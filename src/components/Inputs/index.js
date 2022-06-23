@@ -1,3 +1,5 @@
 import Checkbox from "./Checkbox";
+import InputText from "./InputText";
+import InputTextArea from "./InputTextArea";
 
-export default { Checkbox };
+export { Checkbox, InputText, InputTextArea };

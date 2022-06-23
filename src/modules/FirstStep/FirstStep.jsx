@@ -1,18 +1,60 @@
 import React from "react";
-import { BackTo, Layout } from "components";
+import { BackTo, Layout, Summary } from "components";
 import {
   FirstStepWrapper,
-  Header,
+  LeftHeader,
   Heading1,
   LeftComponent,
+  Form,
+  FormContent,
 } from "./FirstStep.style";
-import Checkbox from "components/Inputs/Checkbox";
+import { Checkbox, InputText, InputTextArea } from "components/Inputs";
+import { useForm } from "react-hook-form";
 
 const FirstStep = () => {
-  const [checked, setChecked] = React.useState(false);
+  const [isDropshipper, setDropshipper] = React.useState(false);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email:
+        localStorage.getItem("email") === "null"
+          ? ""
+          : localStorage.getItem("email"),
+      phone:
+        localStorage.getItem("phone") === "null"
+          ? ""
+          : localStorage.getItem("phone"),
+      address:
+        localStorage.getItem("address") === "null"
+          ? ""
+          : localStorage.getItem("address"),
+      dropshipperName:
+        localStorage.getItem("dropshipperName") === "null"
+          ? ""
+          : localStorage.getItem("dropshipperName"),
+      dropshipperPhone:
+        localStorage.getItem("dropshipperPhone") === "null"
+          ? ""
+          : localStorage.getItem("dropshipperPhone"),
+    },
+  });
+  const onSubmit = (data) => console.log(data);
+
+  React.useEffect(() => {
+    localStorage.setItem("cost", 500000);
+    const tmp = localStorage.getItem("isDropshipper");
+    if (tmp === "false" || tmp === "true") {
+      setDropshipper(tmp === "false" ? false : true);
+    }
+  }, []);
 
   const handleCheck = () => {
-    setChecked(!checked);
+    setDropshipper(!isDropshipper);
+    localStorage.setItem("isDropshipper", !isDropshipper);
   };
 
   return (
@@ -20,15 +62,57 @@ const FirstStep = () => {
       <BackTo destination="cart" />
       <FirstStepWrapper>
         <LeftComponent>
-          <Header>
+          <LeftHeader>
             <Heading1>Delivery Details</Heading1>
             <Checkbox
-              checked={checked}
+              checked={isDropshipper}
               onClick={handleCheck}
               text="Send as dropshipper"
             />
-          </Header>
+          </LeftHeader>
+          <Form>
+            <FormContent>
+              <InputText
+                label="email"
+                placeholder="Email"
+                watch={watch}
+                register={register}
+                required
+              />
+              <InputText
+                label="phone"
+                placeholder="Phone number"
+                watch={watch}
+                register={register}
+                required
+              />
+              <InputTextArea
+                label="address"
+                placeholder="Address"
+                watch={watch}
+                register={register}
+                required
+              />
+            </FormContent>
+            {isDropshipper && (
+              <FormContent>
+                <InputText
+                  label="dropshipperName"
+                  placeholder="Dropshipper name"
+                  watch={watch}
+                  register={register}
+                />
+                <InputText
+                  label="dropshipperPhone"
+                  placeholder="Dropshipper phone number"
+                  watch={watch}
+                  register={register}
+                />
+              </FormContent>
+            )}
+          </Form>
         </LeftComponent>
+        <Summary isDropshipper={isDropshipper} />
       </FirstStepWrapper>
     </Layout>
   );
