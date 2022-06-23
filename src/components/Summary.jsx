@@ -66,11 +66,27 @@ const Total = styled.div`
   color: #ff8a00;
   font-family: Montserrat;
   margin-top: 24px;
+  margin-bottom: 24px;
 
   h3 {
     margin: 0;
     font-size: 24px;
     font-weight: 700;
+  }
+`;
+
+const NextButton = styled.button`
+  all: unset;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 20px 40px;
+  background: #ff8a00;
+  text-align: center;
+  border-radius: 2px;
+  color: #ffffff;
+
+  &:hover {
+    background: #ef8100;
   }
 `;
 
@@ -99,6 +115,7 @@ const Summary = ({ isDropshipper }) => {
             <h3>Total</h3> <h3>{formatNumber(total)}</h3>
           </Total>
         </PriceDetail>
+        <NextButton>Continue to Payment</NextButton>
       </DetailWrapper>
     </RightComponent>
   );

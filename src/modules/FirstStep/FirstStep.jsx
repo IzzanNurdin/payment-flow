@@ -1,5 +1,5 @@
 import React from "react";
-import { BackTo, Layout, Summary } from "components";
+import { BackTo, Summary } from "components";
 import {
   FirstStepWrapper,
   LeftHeader,
@@ -58,7 +58,7 @@ const FirstStep = () => {
   };
 
   return (
-    <Layout>
+    <div>
       <BackTo destination="cart" />
       <FirstStepWrapper>
         <LeftComponent>
@@ -114,7 +114,7 @@ const FirstStep = () => {
         </LeftComponent>
         <Summary isDropshipper={isDropshipper} />
       </FirstStepWrapper>
-    </Layout>
+    </div>
   );
 };
 
