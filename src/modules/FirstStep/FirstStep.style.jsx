@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const FirstStepWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  @media only screen and (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
 `;
 
 export const LeftComponent = styled.div`

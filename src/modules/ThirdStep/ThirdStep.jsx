@@ -5,10 +5,8 @@ import {
   Heading1,
   LeftComponent,
   ThirdStepWrapper,
-  CardRow,
-  Card,
 } from "./ThirdStep.style";
-import { formatNumber, randomString } from "utils/format";
+import { randomString } from "utils/format";
 
 const ThirdStep = ({ handleChangeStep }) => {
   const [selectedShipment, setShipment] = React.useState({});
