@@ -11,11 +11,10 @@ import {
 import { Checkbox, InputText, InputTextArea } from "components/Inputs";
 import { useForm } from "react-hook-form";
 
-const FirstStep = () => {
+const FirstStep = ({ handleChangeStep }) => {
   const [isDropshipper, setDropshipper] = React.useState(false);
   const {
     register,
-    handleSubmit,
     watch,
     formState: { errors },
   } = useForm({
@@ -42,7 +41,6 @@ const FirstStep = () => {
           : localStorage.getItem("dropshipperPhone"),
     },
   });
-  const onSubmit = (data) => console.log(data);
 
   React.useEffect(() => {
     localStorage.setItem("cost", 500000);
@@ -77,7 +75,14 @@ const FirstStep = () => {
                 placeholder="Email"
                 watch={watch}
                 register={register}
-                required
+                error={errors}
+                params={{
+                  required: true,
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "invalid email address",
+                  },
+                }}
               />
               <InputText
                 label="phone"
@@ -112,7 +117,11 @@ const FirstStep = () => {
             )}
           </Form>
         </LeftComponent>
-        <Summary isDropshipper={isDropshipper} />
+        <Summary
+          isDropshipper={isDropshipper}
+          step={1}
+          onNext={handleChangeStep}
+        />
       </FirstStepWrapper>
     </div>
   );

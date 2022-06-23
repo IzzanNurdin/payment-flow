@@ -49,12 +49,14 @@ const Stepper = ({ currentStep }) => {
       </Step>
       <MdChevronRight fill="#FF8A00" />
       <Step>
-        <NumberStep>2</NumberStep>
+        <NumberStep current={currentStep === 2 || currentStep === 3}>
+          2
+        </NumberStep>
         Payment
       </Step>
       <MdChevronRight fill="#FF8A00" />
       <Step>
-        <NumberStep>3</NumberStep>
+        <NumberStep current={currentStep === 3}>3</NumberStep>
         Finish
       </Step>
     </Wrapper>

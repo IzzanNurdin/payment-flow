@@ -1,0 +1,5 @@
+[
+  { "name": "e-Wallet", "balance": 1500000 },
+  { "name": "Bank Transfer" },
+  { "name": "Virtual Account" }
+]

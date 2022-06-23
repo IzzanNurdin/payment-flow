@@ -19,7 +19,7 @@ const Button = styled.button`
 
 const BackTo = ({ destination, onClick }) => {
   return (
-    <Button>
+    <Button onClick={onClick}>
       <MdOutlineArrowBack />
       {`Back to ${destination}`}
     </Button>

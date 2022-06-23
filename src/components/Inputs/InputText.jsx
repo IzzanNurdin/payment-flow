@@ -26,7 +26,7 @@ const Input = styled.div`
   }
 `;
 
-const InputText = ({ placeholder, label, watch, register, required }) => {
+const InputText = ({ placeholder, label, error, watch, register, params }) => {
   const watcher = watch(label);
 
   React.useEffect(() => {
@@ -39,7 +39,7 @@ const InputText = ({ placeholder, label, watch, register, required }) => {
       <input
         id={label}
         placeholder={placeholder}
-        {...register(label, { required })}
+        {...register(label, params)}
       />
     </Input>
   );

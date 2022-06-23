@@ -90,15 +90,57 @@ const NextButton = styled.button`
   }
 `;
 
-const Summary = ({ isDropshipper }) => {
+const Expedition = styled.div`
+  font-family: Inter;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .border {
+    border-top: 1px solid #d8d8d8;
+    width: 15%;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  label {
+    margin: 0;
+    color: #1bd97b;
+    font-size: 16px;
+    font-weight: 500;
+  }
+`;
+
+const Summary = ({ isDropshipper, step, onNext, shipment, payment }) => {
   const cost = Number(localStorage.getItem("cost"));
   const costDropship = isDropshipper ? 5900 : 0;
-  const total = cost + costDropship;
+  const costShipment = shipment ? shipment.price : 0;
+  const total = cost + costDropship + costShipment;
   return (
     <RightComponent>
       <RightHeader>
         <Heading3>Summary</Heading3>
         <Paragraph>10 items purchased</Paragraph>
+        {(step === 2 || step === 3) && shipment && (
+          <Expedition>
+            <div className="border"></div>
+            <p>Delivery estimation</p>
+            <label>
+              {shipment.name === "GO-SEND"
+                ? `Today by ${shipment.name}`
+                : shipment.name === "JNE"
+                ? `2 days by ${shipment.name}`
+                : shipment.name === "Personal Courier"
+                ? `1 day by ${shipment.name}`
+                : ""}
+            </label>
+          </Expedition>
+        )}
       </RightHeader>
       <DetailWrapper>
         <PriceDetail>
@@ -111,11 +153,25 @@ const Summary = ({ isDropshipper }) => {
               <p>Dropshipping Fee</p> <span>{formatNumber(costDropship)}</span>
             </Price>
           )}
+          {(step === 2 || step === 3) && shipment && (
+            <Price>
+              <p>
+                <b>{shipment.name}</b> shipment
+              </p>{" "}
+              <span>{formatNumber(shipment.price)}</span>
+            </Price>
+          )}
           <Total>
             <h3>Total</h3> <h3>{formatNumber(total)}</h3>
           </Total>
         </PriceDetail>
-        <NextButton>Continue to Payment</NextButton>
+        <NextButton onClick={() => onNext(step + 1)}>
+          {step === 1
+            ? "Continue to Payment"
+            : step === 2
+            ? `Pay with ${payment.name}`
+            : ""}
+        </NextButton>
       </DetailWrapper>
     </RightComponent>
   );
