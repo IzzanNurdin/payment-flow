@@ -88,6 +88,10 @@ const SecondStep = ({ handleChangeStep }) => {
           onNext={() => handleChangeStep(3)}
           shipment={selectedShipment}
           payment={selectedPayment}
+          validNext={
+            selectedPayment.name !== undefined &&
+            selectedShipment.name !== undefined
+          }
           step={2}
         />
       </SecondStepWrapper>

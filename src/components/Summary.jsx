@@ -85,6 +85,14 @@ const NextButton = styled.button`
   border-radius: 2px;
   color: #ffffff;
 
+  &:disabled {
+    background: #bcbcbc;
+  }
+
+  &:disabled&:hover {
+    background: #bcbcbc;
+  }
+
   &:hover {
     background: #ef8100;
   }
@@ -117,7 +125,14 @@ const Expedition = styled.div`
   }
 `;
 
-const Summary = ({ isDropshipper, step, onNext, shipment, payment }) => {
+const Summary = ({
+  isDropshipper,
+  step,
+  onNext,
+  shipment,
+  payment,
+  validNext,
+}) => {
   const cost = Number(localStorage.getItem("cost"));
   const costDropship = isDropshipper ? 5900 : 0;
   const costShipment = shipment ? shipment.price : 0;
@@ -176,11 +191,11 @@ const Summary = ({ isDropshipper, step, onNext, shipment, payment }) => {
           </Total>
         </PriceDetail>
         {step !== 3 && (
-          <NextButton onClick={() => onNext(step + 1)}>
+          <NextButton disabled={!validNext} onClick={() => onNext(step + 1)}>
             {step === 1
               ? "Continue to Payment"
               : step === 2
-              ? `Pay with ${payment.name}`
+              ? `Pay with ${payment.name ? payment.name : ""}`
               : ""}
           </NextButton>
         )}

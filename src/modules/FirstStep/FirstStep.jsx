@@ -71,13 +71,14 @@ const FirstStep = ({ handleChangeStep }) => {
           <Form>
             <FormContent>
               <InputText
+                name="email"
                 label="email"
                 placeholder="Email"
                 watch={watch}
                 register={register}
                 error={errors}
                 params={{
-                  required: true,
+                  required: "Required",
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                     message: "invalid email address",
@@ -85,18 +86,22 @@ const FirstStep = ({ handleChangeStep }) => {
                 }}
               />
               <InputText
+                name="phone"
                 label="phone"
                 placeholder="Phone number"
                 watch={watch}
                 register={register}
-                required
+                params={{
+                  required: "Required",
+                }}
               />
               <InputTextArea
+                name="address"
                 label="address"
                 placeholder="Address"
                 watch={watch}
                 register={register}
-                required
+                required="required"
               />
             </FormContent>
             {isDropshipper && (
@@ -121,6 +126,7 @@ const FirstStep = ({ handleChangeStep }) => {
           isDropshipper={isDropshipper}
           step={1}
           onNext={handleChangeStep}
+          validNext={true}
         />
       </FirstStepWrapper>
     </div>
