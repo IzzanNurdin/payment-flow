@@ -14,4 +14,4 @@ In this step, user will select the shipment that they will use and the payment t
 
 This step only shows that the payment received and showing the order ID with random generated alphanumerical without 1,I,0, and O. The summary component shows delivery estimation, payment method, total amount details and the total amount that was paid. It contain a button to go back to homepage but it will redirected back to the first step.
 
-All in all, i'm only passing the parameters between components and save it in local storage so after it refresh, it still on the last step and what the user already input. This page is also styled for a responsive design.
+All in all, i'm only passing the parameters between components and save it in local storage so after it refresh, it still on the last step and what the user already input. This page is also styled for a responsive design. I'm using the `react-hooks-form` but somehow i can't get the errors state of each input for now.
