@@ -2,6 +2,40 @@
 
 this is a checkout page of a tech test. Made using React with `create-react-app` and some external libraries from `react-hooks-form` and `react-icons`.
 
+## How to run
+
+You can run it using `npm` or `yarn`
+
+_npm_
+
+install with
+
+```
+npm install
+```
+
+and then run it with
+
+```
+npm run start
+```
+
+_yarn_
+
+install with
+
+```
+yarn
+```
+
+and then run it with
+
+```
+yarn start
+```
+
+## Journey
+
 ### First step (Delivery)
 
 This step contains delivery details of receiver, consist of 5 input texts whereis 3 input for personal data and 2 other for dropshipper data (if user select it to send as a dropshipper). On the right hand there is a summary component of goods and total amount that needs to be paid. If user send it as a dropshipper, then there is a fee for dropshipping that will be added with the cost of goods.
