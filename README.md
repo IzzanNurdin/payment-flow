@@ -1,70 +1,17 @@
-# Getting Started with Create React App
+# Jak-tech-test (Checkout)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+this is a checkout page of a tech test. Made using React with `create-react-app` and some external libraries from `react-hooks-form` and `react-icons`.
 
-## Available Scripts
+### First step (Delivery)
 
-In the project directory, you can run:
+This step contains delivery details of receiver, consist of 5 input texts whereis 3 input for personal data and 2 other for dropshipper data (if user select it to send as a dropshipper). On the right hand there is a summary component of goods and total amount that needs to be paid. If user send it as a dropshipper, then there is a fee for dropshipping that will be added with the cost of goods.
 
-### `npm start`
+### Second step (Payment)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In this step, user will select the shipment that they will use and the payment that they will pay from. Each shipment contain a name and a price for delivery. As for the payment, consist of e-Wallet showing current balance, bank transfer, and virtual account. On selecting shipment, there will be added an estimation of delivery inside the summary component based on shipment the user choose, and the button to pay will be changed using which the user choose for the payment method.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Third step (Final)
 
-### `npm test`
+This step only shows that the payment received and showing the order ID with random generated alphanumerical without 1,I,0, and O. The summary component shows delivery estimation, payment method, total amount details and the total amount that was paid. It contain a button to go back to homepage but it will redirected back to the first step.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+All in all, i'm only passing the parameters between components and save it in local storage so after it refresh, it still on the last step and what the user already input. This page is also styled for a responsive design.
